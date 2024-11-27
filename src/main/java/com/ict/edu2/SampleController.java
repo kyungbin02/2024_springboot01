@@ -138,29 +138,21 @@ public class SampleController {
 
   // 반환형이 객체 일때
     @PostMapping("/hi7")
-    public DataVO getHi7(@RequestParam String number) {
+    public DataVO gethi7(@RequestParam(value = "number", required = false, defaultValue = "0") String number) {
         DataVO dataVO = new DataVO();
-
+    
         List<SampleVO> list = new ArrayList<>();
-
+    
         SampleVO svo = new SampleVO("고길동", "54");
         SampleVO svo2 = new SampleVO("희동이", "23");
         SampleVO svo3 = new SampleVO("도우너", "47");
         list.add(svo);
         list.add(svo2);
         list.add(svo3);
-
+    
         if (number.equals("1")) {
-            // dataVO.setResultCode(1);
-            // dataVO.setMessage("성공");
-            // dataVO.setData(list);
-
             return DataVO.success(list, "성공");
         } else {
-            // dataVO.setResultCode(0);
-            // dataVO.setMessage("실패");
-            // dataVO.setData(null);
-
             return DataVO.fail(0, "실패");
         }
     }
